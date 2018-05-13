@@ -6,7 +6,7 @@
     "tags": ["Typescript", "Mikey"]
   },
   {
-    "filename": "simple-online-chat",
+    "filename": "simple-online-chat.md",
     "title": "简易聊天室",
     "createdAt": 1526216839808,
     "tags": ["Websocket", "typescript", "Nodejs"]
