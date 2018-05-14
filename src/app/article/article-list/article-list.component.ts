@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ArticleService, ConfigData} from '../service/article.service';
-import {Article} from '../model/article';
+import {ArticleService, ConfigData} from '../../service/article.service';
+import {Article} from '../../model/article';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -12,15 +12,11 @@ export class ArticleListComponent implements OnInit {
   page = 1;
   partArticles: Article[] = [];
 
-  constructor(public articleService: ArticleService, private route: ActivatedRoute) {
+  constructor(public articleService: ArticleService) {
   }
 
   ngOnInit() {
-    this.route.data
-      .subscribe((data: {configData: ConfigData[]}) => {
-        this.articleService.parseConfigFile(data.configData);
-        this.getArticles(this.page);
-      });
+    this.getArticles(this.page);
   }
 
   getArticles(page: number) {

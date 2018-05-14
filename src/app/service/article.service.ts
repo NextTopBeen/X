@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {mergeMap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 
-interface GithubContentApi {
+export interface GithubContentApi {
   name: string;
   path: string;
   sha: string;
@@ -49,12 +49,11 @@ export class ArticleService {
       // .subscribe(data => this.parseConfigFile(data));
   }
 
-  private parseGithubContentApiData(data: GithubContentApi[]) {
+  parseGithubContentApiData(data: GithubContentApi[]) {
     data
       .filter(v => v.name.match(/(.+)\.md$/) != null)
-      .forEach((value, index) => {
+      .forEach((value) => {
         this.articles.push({
-          id: index,
           verboseId: value.name.match(/(.+)\.md$/)[1],
           url: value.download_url,
           filename: value.name
@@ -62,7 +61,7 @@ export class ArticleService {
       });
   }
 
-  public parseConfigFile(data: ConfigData[]) {
+  parseConfigFile(data: ConfigData[]) {
     this.configData = data;
     data.forEach(v => {
       const art = this.articles.find(a => a.filename === v.filename);
@@ -70,6 +69,15 @@ export class ArticleService {
       art.title = v.title;
       art.tags = v.tags;
     });
+    this.articles
+      .sort(((a, b) => {
+        if (a.createdAt > b.createdAt) {
+          return 1;
+        } else if (a.createdAt < b.createdAt) {
+          return -1;
+        }
+      }))
+      .forEach((value, index) => value.id = index)
     console.log(this.articles);
   }
 
