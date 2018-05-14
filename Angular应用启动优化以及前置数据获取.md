@@ -36,8 +36,6 @@
 
 ![](https://raw.githubusercontent.com/Lurance/X/Articles/imgs/Gif_20180514_200450.gif)
 
-那个。。。这个gif没做压缩，各位可以等等等等等.......
-
 
 ### 方案二
 
