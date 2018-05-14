@@ -70,15 +70,8 @@ export class ArticleService {
       art.tags = v.tags;
     });
     this.articles
-      .sort(((a, b) => {
-        if (a.createdAt > b.createdAt) {
-          return 1;
-        } else if (a.createdAt < b.createdAt) {
-          return -1;
-        }
-      }))
-      .forEach((value, index) => value.id = index)
-    console.log(this.articles);
+      .sort(((a, b) => a.createdAt - b.createdAt))
+      .forEach((value, index) => value.id = index);
   }
 
   getArticles(page: number = 1): Observable<Article[]> {
