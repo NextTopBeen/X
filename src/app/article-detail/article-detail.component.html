@@ -1,0 +1,68 @@
+<body>
+<div class="container">
+  <article class="article article-type-post">
+    <app-nav-bar></app-nav-bar>
+    <hr/>
+
+    <div class="article-inner">
+      <header class="article-header">
+
+
+        <h1 class="article-title">
+          {{ (article$ | async)?.title }}
+        </h1>
+      </header>
+
+      <div class="article-entry typo">
+        <markdown ngPreserveWhitespaces
+                  [src]="(article$ | async)?.url"></markdown>
+      </div>
+
+      <footer class="article-footer">
+        <ul class="article-meta">
+          <li>
+            <span class="label">Published Date:</span>
+            <a [routerLink]="['/article', (article$ | async)?.verboseId]" class="article-date">
+              <time>{{(article$ | async)?.createdAt | date:'MMM dd yyyy':'+0800'}}</time>
+            </a>
+
+          </li>
+
+
+          <li>
+            <span class="label">Tag:</span>
+
+            <ul class="article-tag-list">
+              <li class="article-tag-list-item">
+                <a class="article-tag-list-link" *ngFor="let t of ( article$ | async)?.tags">#{{t}} &nbsp;&nbsp;</a>
+              </li>
+            </ul>
+
+
+          </li>
+        </ul>
+        <hr/>
+      </footer>
+    </div>
+
+    <nav id="article-nav" class="article-nav" *ngIf="adjacentArticles$">
+
+      <a *ngFor="let a of (adjacentArticles$ | async)" class="article-nav-link-wrap newer"
+         [routerLink]="['/article', a?.verboseId]">
+        <strong class="article-nav-caption" *ngIf="a.id < (article$ | async)?.id ">Pre</strong>
+        <strong class="article-nav-caption" *ngIf="a.id > (article$ | async)?.id ">next</strong>
+        <div class="article-nav-title">
+          {{a?.title}}
+
+        </div>
+      </a>
+    </nav>
+
+  </article>
+</div>
+
+<footer id="footer" class="post-footer footer">
+  <app-footer></app-footer>
+  <hr/>
+</footer>
+</body>

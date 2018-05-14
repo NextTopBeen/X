@@ -1,3 +1,39 @@
-<p>
-  article-list works!
-</p>
+<body>
+<div class="container">
+  <div class="archive-container">
+    <app-nav-bar></app-nav-bar>
+    <hr class="header-hr header-hr-left"/>
+
+    <section class="archives-wrap">
+      <div class="archives" *ngFor="let a of partArticles">
+        <article class="archive-article archive-type-post">
+          <div class="archive-article-inner">
+            <header class="archive-article-header">
+              <a class="archive-article-date" [routerLink]="['/article', a.verboseId]">
+                <time>{{a.createdAt | date:'MMM dd yyyy':'+0800'}}</time>
+              </a>
+              <h1 itemprop="name">
+                <a class="archive-article-title" [routerLink]="['/article', a.verboseId]">{{a.title}}</a>
+              </h1>
+            </header>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <nav class="page-nav">
+      <a class="extend per" rel="per" (click)="prePage()" *ngIf="page > 1">&laquo; Pre </a>
+      <a *ngFor="let pn of articleService.getPageNumlist()" class="page-number" [class.current]="pn === page"
+         (click)="goTo(pn)">
+        {{pn}}
+      </a>
+      <a class="extend next" rel="next" (click)="nextPage()" *ngIf="page < articleService.getPageNumlist().length">Next &raquo;</a>
+    </nav>
+    <footer class="archive-footer footer">
+      <app-footer></app-footer>
+      <hr/>
+    </footer>
+  </div>
+</div>
+
+</body>

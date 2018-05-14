@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {ArticleListComponent} from './article-list/article-list.component';
+import {ArticleDetailComponent} from './article-detail/article-detail.component';
+import {ArticleResolver} from './service/article-resolver.service';
 
 const appRoutes: Routes = [
   {
@@ -11,11 +13,24 @@ const appRoutes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    resolve: {
+      configData: ArticleResolver
+    }
   },
   {
     path: 'article',
-    component: ArticleListComponent
+    component: ArticleListComponent,
+    resolve: {
+      configData: ArticleResolver
+    }
+  },
+  {
+    path: 'article/:vid',
+    component: ArticleDetailComponent,
+    resolve: {
+      configData: ArticleResolver
+    }
   }
 ];
 
@@ -27,6 +42,9 @@ const appRoutes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    ArticleResolver
   ]
 })
 export class AppRoutingModule {

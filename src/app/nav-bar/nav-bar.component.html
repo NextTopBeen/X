@@ -1,3 +1,25 @@
-<p>
-  nav-bar works!
-</p>
+<header class="header">
+  <div class="mobile-nav">
+    <h1 class="nickname">NIANG</h1>
+    <a [matMenuTriggerFor]="menu" style="float: right">
+      &#9776; Menu
+    </a>
+  </div>
+
+  <mat-menu #menu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item routerLink="/">/Home</button>
+    <button mat-menu-item routerLink="/article">/Articles</button>
+    <button mat-menu-item routerLink="/Resume">/Resume</button>
+  </mat-menu>
+
+  <nav id="main-nav" class="main-nav nav-left">
+
+
+    <a class="main-nav-link" routerLink="/">/Home</a>
+
+    <a class="main-nav-link" routerLink="/article">/Articles</a>
+
+    <a class="main-nav-link">/Resume</a>
+
+  </nav>
+</header>

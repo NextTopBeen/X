@@ -764,7 +764,7 @@ blockquote {
 .home .profile h1 {
   font-size: 100px;
   font-weight: 500;
-  
+
 }
 .nav-left {
   position: absolute;
@@ -853,7 +853,7 @@ blockquote {
 .category-container .archive-article-title,
 .tag-container .archive-article-title {
   font-weight: 350;
-  
+
 }
 .archive-container .archive-year-wrap,
 .category-container .archive-year-wrap,
@@ -923,7 +923,7 @@ blockquote {
 .article h4,
 .article h5,
 .article h6 {
-  
+
   font-size: 20px;
   font-weight: bolder;
 }
@@ -1057,7 +1057,6 @@ blockquote {
   margin-right: 5px;
 }
 .article .article-meta .article-tag-list-item:before {
-  content: "#";
 }
 .article .article-gallery img {
   width: 100%;

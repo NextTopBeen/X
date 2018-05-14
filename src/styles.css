@@ -1,3 +1,26 @@
 @import "assets/css/typing.css";
 
 @import "assets/css/donate.css";
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+.page-nav .current {
+  color: #aeb4b9 !important;
+  cursor: default;
+}
+
+@media (max-width: 468px) {
+  .footer-links {
+    font-size: 20px;
+    padding: 50px 0
+  }
+
+  footer {
+    bottom: 0;
+  }
+
+  .archive-footer {
+    padding: 0 !important;
+  }
+}

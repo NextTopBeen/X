@@ -1,9 +1,9 @@
 export class Article {
   id: number;
+  filename: string;
   verboseId: string;
-  title: string;
-  content: string;
-  createdAt: number;
-  tag: string;
-  like: number;
+  title?: string;
+  tags?: string[];
+  url: string;
+  createdAt?: number;
 }
