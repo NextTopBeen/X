@@ -39,5 +39,5 @@
 
 放个猫片咯嘻嘻：
 
-![mao](https://raw.githubusercontent.com/Lurance/X/Articles/imgs/m6.png)
+![mao](https://raw.githubusercontent.com/Lurance/X/Articles/imgs/m6.jpg)
 
