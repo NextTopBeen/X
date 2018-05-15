@@ -11,7 +11,7 @@
 
 ### 方案一
 
-在index.html里面的<app-root></app-root>标签内写上想要给用户看的东西。app-root是Angular应用启动后渲染组件的根挂载点，当其成功渲染（在我这里就是数据成功过去到了）就会自动移除其中的内容
+在index.html里面的<app-root></app-root>标签内写上想要给用户看的东西。app-root是Angular应用启动后渲染组件的根挂载点，当其成功渲染（在我这里就是数据成功获取到了）就会自动移除其中的内容
 
 ```html
 <app-root>
@@ -99,7 +99,7 @@ export class StartService {
 
 ```
 
-其中的load方法一定要返回一个Promise。在这里我依赖注入实例化了一个httpClient用于发起请求。做的事情就是预先通过Github API取得所有的文章以及配置数据，并解析
+其中的load方法一定要返回一个Promise。在这里我依赖注入实例化了一个HttpClient用于发起请求。做的事情就是预先通过Github API取得所有的文章以及配置数据，并解析
 
 
 在app.module.ts中首先需要写一个工厂函数：
