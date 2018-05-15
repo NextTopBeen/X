@@ -47,8 +47,11 @@
 
     <nav id="article-nav" class="article-nav" *ngIf="adjacentArticles$">
 
-      <a *ngFor="let a of (adjacentArticles$ | async)" class="article-nav-link-wrap newer"
-         [routerLink]="['/article', a?.verboseId]">
+      <a *ngFor="let a of (adjacentArticles$ | async)" class="article-nav-link-wrap"
+         [routerLink]="['/article', a?.verboseId]"
+         [class.newer]="a.id > (article$ | async)?.id"
+         [class.older]="a.id < (article$ | async)?.id"
+      >
         <strong class="article-nav-caption" *ngIf="a.id < (article$ | async)?.id ">Pre</strong>
         <strong class="article-nav-caption" *ngIf="a.id > (article$ | async)?.id ">next</strong>
         <div class="article-nav-title">

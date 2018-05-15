@@ -1,29 +1,56 @@
 {
   "index": "/index.html",
-  "assetGroups": [{
-    "name": "app",
-    "installMode": "prefetch",
-    "resources": {
-      "files": [
-        "/favicon.ico",
-        "/index.html",
-        "/*.css",
-        "/*.js"
-      ],
-      "versionedFiles": [
-        "/*.bundle.css",
-        "/*.bundle.js",
-        "/*.chunk.js"
-      ]
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/*.css",
+          "/*.js"
+        ],
+        "versionedFiles": [
+          "/*.bundle.css",
+          "/*.bundle.js",
+          "/*.chunk.js"
+        ],
+        "urls": [
+          "https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css",
+          "https://cdn.bootcss.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**"
+        ]
+      }
     }
-  }, {
-    "name": "assets",
-    "installMode": "lazy",
-    "updateMode": "prefetch",
-    "resources": {
-      "files": [
-        "/assets/**"
-      ]
+  ],
+  "dataGroups": [
+    {
+      "name": "articles",
+      "urls": ["**/*.md"],
+      "cacheConfig": {
+        "maxSize": 50,
+        "maxAge": "7d",
+        "stratey": "freshness"
+      }
+    },
+    {
+      "name": "configData",
+      "urls": ["**/*.json", "https://api.github.com/repos/Lurance/X/contents/?ref=Articles"],
+      "cacheConfig": {
+        "maxSize": 50,
+        "maxAge": "2d",
+        "stratey": "freshness"
+      }
     }
-  }]
+  ]
 }
