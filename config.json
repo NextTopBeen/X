@@ -40,5 +40,5 @@
     "title": "Angular搭配Service Worker缓存机制详谈",
     "createdAt": 1526701097779,
     "tags": ["Angular", "TypeScript", "PWA", "Service Worker"]
-  },
+  }
 ]
