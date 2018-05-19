@@ -8,6 +8,7 @@ import {ResumeModule} from './resume/resume.module';
 import {ArticleModule} from './article/article.module';
 import {MarkdownModule} from 'ngx-markdown';
 import {StartService} from './service/start.service';
+import {WordCloudModule} from './word-cloud/word-cloud.module';
 
 export function StartServiceFactory(startService: StartService): Function {
   return () => {
@@ -26,6 +27,7 @@ export function StartServiceFactory(startService: StartService): Function {
     ResumeModule,
     ArticleModule,
     AppRoutingModule,
+    WordCloudModule,
     MarkdownModule.forRoot()
   ],
   bootstrap: [AppComponent],

@@ -4,6 +4,8 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+@import "https://fonts.googleapis.com/css?family=Finger+Paint";
+
 
 .page-nav .current {
   color: #aeb4b9 !important;

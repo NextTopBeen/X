@@ -9,6 +9,7 @@ import {ArticleRoutingModule} from './article-routing.module';
 import {MatMenuModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ArticleService} from '../service/article.service';
 
 @NgModule({
   imports: [
@@ -28,6 +29,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   exports: [
     NavBarComponent,
     FooterComponent
+  ],
+  providers: [
+    ArticleService
   ]
 })
 export class ArticleModule {

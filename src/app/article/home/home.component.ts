@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ArticleService, ConfigData} from '../../service/article.service';
-import {ActivatedRoute} from '@angular/router';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

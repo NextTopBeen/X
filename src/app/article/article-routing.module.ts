@@ -3,7 +3,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {ArticleListComponent} from './article-list/article-list.component';
 import {ArticleDetailComponent} from './article-detail/article-detail.component';
-import {ArticleService} from '../service/article.service';
 
 const articleRoutes: Routes = [
   {
@@ -24,8 +23,9 @@ const articleRoutes: Routes = [
   imports: [
     RouterModule.forChild(articleRoutes)
   ],
-  exports: [RouterModule],
-  providers: [ArticleService]
+  exports: [
+    RouterModule
+  ],
 })
 export class ArticleRoutingModule {
 }
