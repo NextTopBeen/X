@@ -15,7 +15,7 @@
     "filename": "Angular应用启动优化以及前置数据获取.md",
     "title": "Angular应用启动优化以及前置数据获取",
     "createdAt": 1526306526782,
-    "tags": ["Angular", "TypeScript"]
+    "tags": ["Angular", "TypeScript", "前端"]
   },
   {
     "filename": "future.md",
@@ -39,6 +39,6 @@
     "filename": "Angular-ServiceWorker-Cache.md",
     "title": "Angular搭配Service Worker缓存机制详谈",
     "createdAt": 1526701097779,
-    "tags": ["Angular", "TypeScript", "PWA", "Service Worker"]
+    "tags": ["Angular", "TypeScript", "PWA", "Service Worker", "前端"]
   }
 ]
