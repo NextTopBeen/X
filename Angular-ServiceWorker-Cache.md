@@ -42,6 +42,7 @@ Service Worker是独立于当前JavaScript进程而执行的，它本身都是**
     {
       "name": "app",
       "installMode": "prefetch",
+      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
@@ -85,7 +86,6 @@ Service Worker是独立于当前JavaScript进程而执行的，它本身都是**
     {
       "name": "configData",
       "urls": ["https://raw.githubusercontent.com/Lurance/X/Articles/config.json", "https://api.github.com/repos/Lurance/X/contents/?ref=Articles"],
-      "timeout": "4000",
       "cacheConfig": {
         "maxSize": 50,
         "maxAge": "2d",
@@ -156,4 +156,47 @@ interface AssetGroup {
 > * dataGroups：与这些资产性（asset）资源不同，数据请求不会随应用一起版本化。 它们会根据手动配置的策略进行缓存，这些策略对 API 请求和所依赖的其它数据等情况会更有用
 
 
+在这里我缓存了两组东西，一个是articles，一个是configData，articles其全部都是.md后缀的文件，同时由于其并不是一成不变的，所以也进行了更精细化的控制：
+
+```json
+"cacheConfig": {
+        "maxSize": 50,
+        "maxAge": "2d",
+        "timeout": "3s",
+        "strategy": "freshness"
+}
+```
+
+最大缓存50个条目，过期时间2天，重点是timeout和strategy：
+
+### strategy
+
+Angular Service Worker 可以使用两种缓存策略之一来获取数据资源：
+
+> * performance，默认值，为尽快给出响应而优化。如果缓存中存在某个资源，则使用这个缓存版本。 它允许资源有一定的陈旧性（取决于 maxAge）以换取更好的性能。适用于那些不经常改变的资源，例如用户头像。
+
+> * freshness 为数据的即时性而优化，优先从网络获取请求的数据。只有当网络超时时，请求才会根据 timeout 的设置回退到缓存中。这对于那些频繁变化的资源很有用，例如账户余额
+
+那么timeout便是超时时间
+
+对于这种经常可变的数据，为了让用户得到最新的数据便可以设置这样的缓存。
+
+**用户会强制看到最新的数据，而当它们因为某种原因去得不到最新的数据，便会回退到缓存中的数据**
+
+
+
+
+```typescript
+interface DataGroup {
+  name: string;
+  urls: string[];
+  version?: number;
+  cacheConfig: {
+    maxSize: number;
+    maxAge: string;
+    timeout?: string;
+    strategy?: 'freshness' | 'performance';
+  };
+}
+```
 
